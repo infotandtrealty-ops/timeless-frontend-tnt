@@ -91,7 +91,9 @@ const Websitecourses = () => {
                 for a successful career in permanent makeup.
               </p>
               <Link
-                to="/allcourses"
+                
+                to="/contact" 
+
                 className="inline-block px-6 py-3 border-2 border-[#D4AF37] text-[#D4AF37] rounded-full font-medium font-lato tracking-wide hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300"
               >
                 Enroll Now
