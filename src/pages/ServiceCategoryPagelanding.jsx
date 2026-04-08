@@ -9,7 +9,7 @@ const services = [
     slug: "vampire-facial",
     title: "Vampire Facial",
     description: "Rejuvenate your skin naturally with PRP-based vampire facial therapy.",
-    image: "/comostolgy/botox-treatment.webp",
+    image: "/comostolgy/medicated-facial.webp",
     link: "/services/cosmetology/vampire-facial",
   },
   {
