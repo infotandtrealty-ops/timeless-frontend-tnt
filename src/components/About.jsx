@@ -54,7 +54,7 @@ function About() {
             </p>
 
             <p>
-              The academy empowers aspiring professionals through
+              TThe academy empowers aspiring professionals through
               government-certified courses, hands-on training, and global
               accreditation.
             </p>
