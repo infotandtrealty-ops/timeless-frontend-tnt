@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.timelessaestheticss.com/sitemap.xml
+
+# Block common non-content paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /signup
+Disallow: /forgotpassword
+Disallow: /profile
+Disallow: /editprofile
+Disallow: /dashboard
+Disallow: /searchwithai
+Disallow: /viewcourse/
+Disallow: /viewlecture/
+Disallow: /enrolledcourses
+Disallow: /addcourses/
+Disallow: /createcourses
+Disallow: /createlecture/
+Disallow: /editlecture/
+Disallow: /admin/blog/
+Disallow: /demo-routes
+Disallow: /test
+
+# Allow specific resource paths
+Allow: /admin/blog/create
+Allow: /admin/blog/edit/
+Allow: /admin/blogs
