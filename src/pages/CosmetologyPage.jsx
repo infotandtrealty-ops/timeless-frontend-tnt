@@ -11,14 +11,14 @@ const courses = [
     link: "/courses/cosmetology/master-chemical-peels",
     description:
       "A fast-track program focusing on skin anatomy, advanced facial treatments, and the precision application of clinical chemical peels for various skin concerns.",
-    image: "/Cosmetology/Banner_Cover/1.png",
+    image: "/Cosmetology/Banner_Cover/1.jpeg",
   },
   {
     title: "Diploma in Cosmetology",
     link: "/courses/cosmetology/diploma-advanced",
     description:
       "An extensive clinical program covering medical-grade skin care, electrical aesthetic treatments, and advanced hair and scalp therapy protocols.",
-      image: "/Cosmetology/Banner_Cover/2.png",
+      image: "/Cosmetology/Banner_Cover/2.jpeg",
     },
 ];
 
@@ -66,7 +66,7 @@ const CosmetologyPage = () => {
             className="relative"
           >
             <img
-              src="/Cosmetology/Banner_Cover/Middle_Main Banner.png"
+              src="/Cosmetology/Banner_Cover/3.jpeg"
               alt="Cosmetology Practice"
               className="rounded-xl shadow-2xl border-b-4 border-r-4 border-[#D4AF37] hover:scale-[1.02] transition-transform duration-300"
             />
