@@ -251,8 +251,8 @@ function Nav() {
               {
                 label: 'Laser Practise',
                 submenu: [
-                  { label: 'Fellowship in Permanent make up and cosmetology', link: '/courses/fellowship/permanent-cosmetology' },
-                  { label: 'Fellowship in Facial Aesthetics, Permanent Make up & Cosmetology', link: '/courses/fellowship/facial-permanent-cosmetology' },
+                  { label: 'Laser Hair Reduction', link: 'courses/laser-practice/laser-practice-page1' },
+                  { label: 'HIFU (Skin Tightening)', link: 'courses/laser-practice/laser-practice-page2' },
                     ]
               }
 
