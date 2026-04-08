@@ -54,7 +54,7 @@ const Footer = () => {
           <h3 className="font-semibold mb-3 text-white">GET IN TOUCH</h3>
           <p className="text-sm text-gray-300">
             Timeless Aesthetics <br />
-            2nd Floor, Ameya One, Golf Course Road, Sector 42, Gurgaon, Haryana 122022
+            3rd floor, 311 Vipul Agora Mall, MG Road , Gurgaon
           </p>
           <p className="mt-2 text-sm text-gray-300">📞 (+91) 9654009966</p>
           <p className="text-sm text-gray-300">✉️ info@timelessaesthetics.in</p>
