@@ -67,6 +67,12 @@ import IndividualServicePage from './pages/IndividualServicePage'
 import MediaPage from './pages/MediaPage'
 import AcademyPage from './pages/AcademyPage'
 import ContactPage from './pages/ContactPage.jsx'
+
+
+import PrivacyPolicy from './pages/Privacy-policy.jsx'
+
+
+
 import AboutUs from './pages/AboutUs'
 import DemoRoutes from './pages/DemoRoutes'
 import TestRoute from './pages/TestRoute'
@@ -314,6 +320,11 @@ function App() {
         <Route path='/academy' element={<AcademyPage/>}/>
         {/* Contact */}
         <Route path='/contact' element={<ContactPage/>}/>
+
+        <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+
+
+
         {/* About */}
         <Route path='/about' element={<AboutUs/>}/>
          </Routes>
