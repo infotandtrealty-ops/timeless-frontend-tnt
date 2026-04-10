@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { motion, useAnimationControls } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ClientTestimonials = () => {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false); // New State
+  const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
     "https://www.instagram.com/reel/DS4KtLrCB3P/",
@@ -14,140 +13,101 @@ const ClientTestimonials = () => {
     "https://www.instagram.com/reel/DS1nO4DACBJ/"
   ];
 
+  // Infinite Logic: Hum items ko replicate kar rahe hain taaki "white space" na aaye
+  const displayItems = [...testimonials, ...testimonials, ...testimonials];
+  const totalOriginal = testimonials.length;
+
   useEffect(() => {
-    const processEmbeds = () => {
-      if (window.instgrm) {
-        window.instgrm.Embeds.process();
-      } else {
-        const script = document.createElement("script");
-        script.src = "https://www.instagram.com/embed.js";
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    };
-    processEmbeds();
+    if (!window.instgrm) {
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      window.instgrm.Embeds.process();
+    }
   }, [index]);
 
   const nextStep = useCallback(() => {
-    setDirection(1);
-    setIndex((prev) => (prev + 1 >= testimonials.length ? 0 : prev + 1));
-  }, [testimonials.length]);
+    setIndex((prev) => (prev + 1 >= totalOriginal ? 0 : prev + 1));
+  }, [totalOriginal]);
 
   const prevStep = () => {
-    setDirection(-1);
-    setIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setIndex((prev) => (prev === 0 ? totalOriginal - 1 : prev - 1));
   };
 
-  // --- Auto Scroll Logic (Pauses if isAutoScrollPaused is true) ---
   useEffect(() => {
-    if (isAutoScrollPaused) return; // Stop timer if paused
-
-    const timer = setInterval(() => {
-      nextStep();
-    }, 6000); 
+    if (isPaused) return;
+    const timer = setInterval(nextStep, 5000);
     return () => clearInterval(timer);
-  }, [nextStep, isAutoScrollPaused]);
-
-  const getVisibleIndices = () => {
-    const i1 = index;
-    const i2 = (index + 1) % testimonials.length;
-    const i3 = (index + 2) % testimonials.length;
-    return [i1, i2, i3];
-  };
-
-  const visibleIndices = getVisibleIndices();
+  }, [nextStep, isPaused]);
 
   return (
     <section className="py-20 bg-[#FAF8F6] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
+        
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4 text-[#3B2F2F]">
             Client <span className="text-[#D4AF37]">Testimonials</span>
           </h2>
-          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-4"></div>
-          <p className="text-gray-600 max-w-xl mx-auto">
-            See the magic our experts create. Real results from our wonderful clients.
-          </p>
-          {isAutoScrollPaused && (
-            <button 
-              onClick={() => setIsAutoScrollPaused(false)}
-              className="mt-4 text-xs font-bold text-[#D4AF37] border border-[#D4AF37] px-4 py-1 rounded-full hover:bg-[#D4AF37] hover:text-white transition-all"
-            >
-              RESUME AUTO-SCROLL
-            </button>
-          )}
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto"></div>
         </div>
 
-        <div className="relative group">
-          <button
-            onClick={() => { prevStep(); setIsAutoScrollPaused(true); }}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-30 p-3 bg-white rounded-full shadow-xl text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
+        <div 
+          className="relative group"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prevStep} 
+            className="absolute -left-2 md:left-[-20px] top-1/2 -translate-y-1/2 z-30 p-3 bg-white rounded-full shadow-xl text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} />
           </button>
 
-          <button
-            onClick={() => { nextStep(); setIsAutoScrollPaused(true); }}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-30 p-3 bg-white rounded-full shadow-xl text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
+          <button 
+            onClick={nextStep} 
+            className="absolute -right-2 md:right-[-20px] top-1/2 -translate-y-1/2 z-30 p-3 bg-white rounded-full shadow-xl text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} />
           </button>
 
-          <div className="flex justify-center gap-6 overflow-visible">
-            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-              {visibleIndices.map((idx, pos) => (
-                <motion.div
-                  key={`${testimonials[idx]}-${pos}`}
-                  initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className={`${pos === 0 ? "block" : "hidden md:block"} 
-                    relative w-full max-w-[340px] md:w-[380px] bg-white rounded-2xl shadow-lg border border-gray-100 p-2 h-[620px]`}
+          {/* Slider Window */}
+          <div className="overflow-hidden">
+            <motion.div 
+              className="flex gap-6"
+              animate={{ 
+                // Ab ye logic white space ko cover kar lega
+                x: `calc(-${index * (window.innerWidth < 768 ? 100 : 33.33)}% - ${index * 16}px)` 
+              }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            >
+              {displayItems.map((url, i) => (
+                <div 
+                  key={i} 
+                  className="w-full md:w-[calc(33.33%-16px)] flex-shrink-0 bg-white rounded-2xl shadow-lg p-2 h-[600px] border border-gray-100"
                 >
-                  {/* OVERLAY: Jab tak pause nahi hai, yeh click catch karega */}
-                  {!isAutoScrollPaused && (
-                    <div 
-                      className="absolute inset-0 z-20 cursor-pointer flex items-center justify-center bg-black/5 rounded-2xl group/play"
-                      onClick={() => setIsAutoScrollPaused(true)}
-                    >
-                       <div className="bg-white/20 backdrop-blur-md p-4 rounded-full opacity-0 group-hover/play:opacity-100 transition-opacity">
-                        <Play className="text-white fill-white" size={32} />
-                       </div>
-                    </div>
-                  )}
-
                   <blockquote
                     className="instagram-media"
-                    data-instgrm-permalink={testimonials[idx]}
+                    data-instgrm-permalink={url}
                     data-instgrm-version="14"
-                    style={{
-                      background: "#fff",
-                      border: 0,
-                      borderRadius: "14px",
-                      width: "100%",
-                      margin: 0,
-                    }}
+                    style={{ width: "100%", height: "100%", margin: 0 }}
                   />
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
+            </motion.div>
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 mt-12">
+        {/* Dots Indicators (Only for original items) */}
+        <div className="flex justify-center gap-3 mt-10">
           {testimonials.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                setDirection(i > index ? 1 : -1);
-                setIndex(i);
-                setIsAutoScrollPaused(true);
-              }}
-              className={`transition-all duration-300 rounded-full ${
-                index === i 
-                ? "bg-[#D4AF37] w-8 h-2.5" 
-                : "bg-gray-300 w-2.5 h-2.5 hover:bg-gray-400"
+              onClick={() => setIndex(i)}
+              className={`transition-all duration-500 rounded-full h-2.5 ${
+                index === i ? "bg-[#D4AF37] w-10" : "bg-gray-300 w-2.5"
               }`}
             />
           ))}
