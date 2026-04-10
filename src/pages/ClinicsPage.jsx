@@ -1,7 +1,16 @@
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Phone, Mail, MapPin, Clock, Star, CheckCircle, ArrowRight, Navigation, Globe, ShieldCheck } from "lucide-react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, Link } from "react-router-dom";
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  Star, 
+  CheckCircle, 
+  ArrowRight, 
+  Globe, 
+  ShieldCheck 
+} from "lucide-react";
 import Header from "../components/Nav";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
@@ -27,12 +36,11 @@ const ClinicsPage = () => {
   const [clinicData, setClinicData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // --- AAPKA SAARA ORIGINAL DATA ---
   const clinicsData = {
     amritsar: {
       id: 'amritsar',
       name: 'Timeless Aesthetics - Amritsar',
-      address: '123 Beauty Street, Amritsar, Punjab 143001',
+      address: '1st Floor, Business Square, 4, Mall Rd, Kennedy Avenue, Amritsar, Punjab 143001',
       phone: '+91 9654009966',
       email: 'amritsar@timelessaesthetics.in',
       hours: [
@@ -49,8 +57,8 @@ const ClinicsPage = () => {
     gurgaon: {
       id: 'gurgaon',
       name: 'Timeless Aesthetics - Gurgaon',
-      address: '456 Aesthetic Avenue, Gurgaon, Haryana 122001',
-      phone: '+91 9876543210',
+      address: '3rd floor, 311 Vipul Agora Mall, MG Road , Gurgaon',
+      phone: '+91 9654009966',
       email: 'gurgaon@timelessaesthetics.in',
       hours: [
         'Monday - Saturday: 9:00 AM - 7:00 PM',
@@ -66,8 +74,8 @@ const ClinicsPage = () => {
     jammu: {
       id: 'jammu',
       name: 'Timeless Aesthetics - Jammu',
-      address: '789 Glamour Road, Jammu, Jammu & Kashmir 180001',
-      phone: '+91 8765432109',
+      address: 'Ground Floor Marble Market Road, C Ext, next to HDFC Bank, Sector 1, Trikuta Nagar, Jammu, Jammu and Kashmir 180015',
+      phone: '+91 9654009966',
       email: 'jammu@timelessaesthetics.in',
       hours: [
         'Monday - Saturday: 9:00 AM - 7:00 PM',
@@ -86,7 +94,6 @@ const ClinicsPage = () => {
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const slug = pathSegments[1];
     
-    // Check if we are on a specific clinic page or the main list
     if (slug && clinicsData[slug]) {
       setClinicData(clinicsData[slug]);
     } else {
@@ -251,11 +258,13 @@ const ClinicsPage = () => {
                 </div>
               </div>
 
-              <div className="mt-10 space-y-4">
-                <Button className="w-full py-4 text-sm uppercase tracking-widest font-bold">Book Online</Button>
-                <Button variant="outline" className="w-full text-xs uppercase tracking-widest border-gray-200 text-gray-500">
-                  <Navigation className="w-3 h-3" /> Get Directions
-                </Button>
+              {/* ACTION BUTTON */}
+              <div className="mt-10">
+                <Link to="/contact">
+                  <Button className="w-full py-4 text-sm uppercase tracking-widest font-bold">
+                    Book Online
+                  </Button>
+                </Link>
               </div>
             </Card>
           </aside>
