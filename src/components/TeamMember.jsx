@@ -40,7 +40,6 @@ const TeamMember = () => {
     },
   ];
 
-  // Infinite loop ke liye data ko duplicate kar rahe hain
   const duplicatedMembers = [...teamMembers, ...teamMembers];
 
   return (
@@ -52,47 +51,48 @@ const TeamMember = () => {
         <span className="block w-20 h-1 bg-[#D4AF37] mx-auto mt-2 rounded"></span>
       </div>
 
-      {/* Main Smooth Carousel Track */}
-      <div className="flex overflow-hidden relative group">
-        <motion.div
-          className="flex gap-6"
-          animate={{
-            x: ["0%", "-50%"], // 0 se 50% tak move karega (kyunki humne data double kiya hai)
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 25, // Speed adjust karne ke liye seconds badhao ya kam karo
-              ease: "linear",
-            },
-          }}
-          style={{ width: "fit-content" }}
-          whileHover={{ transition: { duration: 50 } }} // Hover pe slow karne ke liye (Optional)
-        >
-          {duplicatedMembers.map((member, index) => (
-            <div
-              key={`${member.id}-${index}`}
-              className="w-[280px] md:w-[320px] flex-shrink-0 bg-white rounded-xl shadow-md border border-gray-100 hover:border-[#D4AF37] transition-colors duration-300 cursor-pointer overflow-hidden"
-              onClick={() => setSelectedMember(member)}
-            >
-              <div className="h-[300px] overflow-hidden">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                />
+      {/* Main Container with side margins */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6"> 
+        <div className="flex overflow-hidden relative">
+          <motion.div
+            className="flex gap-6 py-4" 
+            animate={{
+              x: ["0%", "-50%"],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              },
+            }}
+            style={{ width: "fit-content" }}
+          >
+            {duplicatedMembers.map((member, index) => (
+              <div
+                key={`${member.id}-${index}`}
+                className="w-[280px] md:w-[320px] flex-shrink-0 bg-white rounded-xl shadow-md border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 cursor-pointer overflow-hidden"
+                onClick={() => setSelectedMember(member)}
+              >
+                <div className="h-[300px] overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-lg font-bold text-[#3B2F2F]">{member.name}</h3>
+                  <p className="text-[#D4AF37] text-xs font-semibold uppercase mb-3">{member.role}</p>
+                  <button className="text-xs font-bold border-b border-[#D4AF37] pb-1 text-[#3B2F2F] hover:text-[#D4AF37] transition-colors">
+                    VIEW PROFILE
+                  </button>
+                </div>
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-lg font-bold text-[#3B2F2F]">{member.name}</h3>
-                <p className="text-[#D4AF37] text-xs font-semibold uppercase mb-3">{member.role}</p>
-                <button className="text-xs font-bold border-b border-[#D4AF37] pb-1 text-[#3B2F2F] hover:text-[#D4AF37] transition-colors">
-                  VIEW PROFILE
-                </button>
-              </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Modal Section */}
