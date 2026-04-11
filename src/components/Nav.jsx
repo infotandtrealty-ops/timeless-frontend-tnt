@@ -214,11 +214,9 @@ function Nav() {
               {
                 label: 'Cosmetology',
                 submenu: [
-                  { label: 'Master Class in Chemical Peels', link: '/courses/cosmetology/master-chemical-peels' },
-                  { label: 'Diploma in Advanced Cosmetology', link: '/courses/cosmetology/diploma-advanced' },
-                  { label: 'Certificate in Professional Cosmetology', link: '/courses/cosmetology/cert-professional' },
-                  { label: 'Certificate Course in Medicated Hydrafacial', link: '/courses/cosmetology/cert-hydrafacial' },
-                  { label: 'Certificate Courses in Chemical Peels', link: '/courses/cosmetology/cert-chemical-peels' }
+                  { label: 'Certificate in Professional Cosmetology', link: '/courses/cosmetology/master-chemical-peels' },
+                  { label: 'Diploma in Cosmetology', link: '/courses/cosmetology/diploma-advanced' },
+           
                 ]
               },
               {
