@@ -101,7 +101,7 @@ function Home() {
           <WhyChooseUs />
           <BeforeAfterResults />
           <FAQ />
-          <BlogSection />
+          {/* <BlogSection /> */}
         </Suspense>
       </main>
 
