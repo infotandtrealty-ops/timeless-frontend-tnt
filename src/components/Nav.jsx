@@ -201,14 +201,12 @@ function Nav() {
               {
                 label: 'Permanent Makeup',
                 submenu: [
-                  { label: "Master's in Permanent Eyebrows", link: '/courses/permanent-makeup/masters-eyebrows' },
-                  { label: 'Master class in Scalp Micropigmentation', link: '/courses/permanent-makeup/master-scalp' },
+                  { label: "Master's in Permanent Makeup", link: '/courses/permanent-makeup/masters-eyebrows' },
                   { label: 'PG Diploma in Permanent Make up', link: '/courses/permanent-makeup/pg-diploma' },
-                  { label: 'Certificate Course in Lip Micropigmentation', link: '/courses/permanent-makeup/cert-lip' },
-                  { label: 'Certificate in Brows and Lash Lift', link: '/courses/permanent-makeup/cert-brows-lash' },
-                  { label: 'Certificate in Scalp Micropigmentation', link: '/courses/permanent-makeup/cert-scalp' },
-                  { label: 'Certificate course in Laser Hair Reduction', link: '/courses/permanent-makeup/cert-laser-hair' },
-                  { label: 'Certificate Course Skin Technicial', link: '/courses/permanent-makeup/cert-skin-tech' },
+                  { label: 'Master class in Scalp Micropigmentation', link: '/courses/permanent-makeup/master-scalp' },
+                  { label: 'Medical Micropigmentation', link: '/courses/permanent-makeup/Medical-Micropigmentation' },
+                  { label: 'Lash Lift & Brow Lamination', link: '/courses/permanent-makeup/cert-skin-tech' },
+                  { label: 'Lip Blush & Neutralization', link: '/courses/permanent-makeup/Medical-micropigmentation' },
                 ]
               },
               {
@@ -222,14 +220,19 @@ function Nav() {
               {
                 label: 'Facial Aesthetics',
                 submenu: [
+                  { label: 'Masters in Aesthetics Medicine', link: '/courses/facial-aesthetics/medical' },
                   { label: 'Masters in Facial Aesthetics', link: '/courses/facial-aesthetics/masters' },
                   { label: 'Master Class In Lipolytic Injections', link: '/courses/facial-aesthetics/master-lipolytic' },
                   { label: 'Master Class in Nose correction', link: '/courses/facial-aesthetics/master-nose' },
                   { label: 'Master Class In Acne Scar Treatment', link: '/courses/facial-aesthetics/master-acne' },
                   { label: 'Masters Class in Plasma Pen', link: '/courses/facial-aesthetics/master-plasma' },
+
                   { label: 'Master class in Under eye rejuvenation', link: '/courses/facial-aesthetics/master-undereye' },
+
                   { label: 'Master class in Lip Fillers', link: '/courses/facial-aesthetics/master-fillers' },
-                  { label: 'PG Diploma in Facial Aesthetics', link: '/courses/facial-aesthetics/pg-diploma' },
+
+                  { label: 'PG Diploma in Facial Aesthetics', link: '/courses/facial-aesthetics/pg-diploma' }
+                  ,
                   { label: 'Certificate Course in Lipolytic Injections', link: '/courses/facial-aesthetics/cert-lipolytic' }
                 ]
               },
