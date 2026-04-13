@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-// const serverUrl = "https://new-website-backend-2.onrender.com";
-const serverUrl = "https://new-website-backend-2.onrender.com";
+// const serverUrl = "https://timeless-backend-1.onrender.com";
+const serverUrl = "https://timeless-backend-1.onrender.com";
 
 const BlogCreate = () => {
   const navigate = useNavigate();

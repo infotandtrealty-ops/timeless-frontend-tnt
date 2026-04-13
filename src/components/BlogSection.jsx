@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const serverUrl = "https://new-website-backend-2.onrender.com";
+const serverUrl = "https://timeless-backend-1.onrender.com";
 
 const BlogSection = () => {
   const [blogs, setBlogs] = useState([]);
